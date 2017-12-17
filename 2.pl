@@ -24,7 +24,7 @@ tempState(K,AM,AC,BM,BC,W,B, L):-
 							legal(BM,BC,W, K), 
 							moveWeapon(AM,AC,BM,BC, W, W2), 
 							B2 is B*(-1),
-							state(K, AM, AC, BM, BC, W2, B2,L2).
+							state(K, AM, AC, BM, BC, W2, B2,L).
 
 							
 %tempState(_,0,0,BM,BC,-1,-1,L).					
