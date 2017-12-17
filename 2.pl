@@ -9,16 +9,17 @@
 
 ferry(M,C,K):- state(K,M,C,0,0,1,1,[]).
 
-state(K,AM,AC,BM,BC,W,B,L):- between(0,K,TM),
+state(K,AM,AC,BM,BC,W,B,L):- not(member([[AM,AC,BM,BC,W,B]],L)),
+						append([[AM,AC,BM,BC,W,B]], L, L2),
+						between(0,K,TM),
 						between(0,K,TC),
 						AM2 is AM-TM, AC2 is AC-TC, BM2 is BM+TM, BC2 is BC+TC,
-						tempState(K, AM2, AC2, BM2, BC2, W, B, L).
+						tempState(K, AM2, AC2, BM2, BC2, W, B, L2).
 
 
 state(_,0,0,BM,BC,-1,-1,L).
 
-tempState(K,AM,AC,BM,BC,W,B, L):- not(member([AM,AC,BM,BC,W,B],L)),
-						append([AM,AC,BM,BC,W,B], L, L2),
+tempState(K,AM,AC,BM,BC,W,B, L):- 
 							legal(AM,AC,W, K), 
 							legal(BM,BC,W, K), 
 							moveWeapon(AM,AC,BM,BC, W, W2), 
