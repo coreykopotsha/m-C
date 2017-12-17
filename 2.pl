@@ -1,9 +1,3 @@
-% K: Boat capacity. AM: The number of missionaries on bank
-% A. AC: The number of cannibals on bank A. BM: The number of missionaries
-% on bank B. BC: The number of cannibals on bank B. W: The location of
-% the weapon. B: The location of the boat. L: The state list, from the initial
-% state to the goal state
-
 ferry(M,C,K):- state(K,M,C,0,0,1,1,[]).
 
 state(K,AM,AC,BM,BC,W,B,L):- between(0,K,TM),
