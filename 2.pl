@@ -8,7 +8,8 @@
 %L: The state list, from the initial state to the goal state.
 
 ferry(M,C,K):- state(K,M,C,0,0,1,1,[]).
-state(_,0,0,_,_,-1,-1,L):- printHeadList(L).
+state(_,0,0,BM,BC,-1,-1,L):- append([[0,0,BM,BC,-1,-1]], L, L2),
+							printHeadList(L2).
 state(K,AM,AC,BM,BC,W,B,L):- not(member([AM,AC,BM,BC,W,B],L)),
 						append([[AM,AC,BM,BC,W,B]], L, L2),
 						between(0,K,TM),
@@ -52,3 +53,4 @@ leaveWeapon(AM,AC,BM,BC, W, W2):- ((BC < BM, AC > AM) ;
 getWeapon(AM,AC,BM,BC, W, W2):- ((W == 1 , AM = 0, AC > 1) ; (W == 1 , BM = 0, BC > 1)), W2 is W*(-1).
 
 printHeadList([H|L]):- print(H).
+
